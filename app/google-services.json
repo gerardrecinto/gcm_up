@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_id": "gcm-test1-1289",
-    "project_number": "813916479990",
-    "name": "gcm-test1"
+    "project_id": "example-gcm-project",
+    "project_number": "000000000000",
+    "name": "example-gcm-project"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:813916479990:android:40bd9973174263d2",
+        "mobilesdk_app_id": "1:000000000000:android:example-one",
         "client_id": "android:com.example.agneev.gcm_test",
         "client_type": 1,
         "android_client_info": {
@@ -39,7 +39,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:813916479990:android:d2c5aa002bf600c8",
+        "mobilesdk_app_id": "1:000000000000:android:example-two",
         "client_id": "android:com.example.agneev.gcm_up",
         "client_type": 1,
         "android_client_info": {

@@ -17,7 +17,7 @@ package com.grokkingandroid.sampleapp.samples.gcm;
 
 public interface Constants {
 
-    String PROJECT_ID = "813916479990";
+    String PROJECT_ID = "000000000000";
 
     String KEY_STATE = "keyState";
     String KEY_REG_ID = "keyRegId";

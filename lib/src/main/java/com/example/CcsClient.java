@@ -75,7 +75,7 @@ public class CcsClient {
 
     /// new: some additional instance and class members
     private static CcsClient sInstance = null;
-    private String mApiKey = "AIzaSyC_oi5v-QwyHirz_xbDzwcdcAROWrZ-xwc";
+    private String mApiKey = System.getenv("GCM_API_KEY");
     private String mProjectId = null;
     private boolean mDebuggable = false;
 
@@ -152,7 +152,7 @@ public class CcsClient {
     
     private CcsClient(String projectId, String apiKey, boolean debuggable) {
         this();
-        mApiKey = "AIzaSyC_oi5v-QwyHirz_xbDzwcdcAROWrZ-xwc";
+        mApiKey = apiKey;
         mProjectId = projectId;
         mDebuggable = debuggable;
     }
@@ -436,7 +436,7 @@ public class CcsClient {
             try {
                 handleIncomingDataMessage(msg);
                 // Send ACK to CCS
-                String apiKey = "AIzaSyC_oi5v-QwyHirz_xbDzwcdcAROWrZ-xwc";
+                String apiKey = System.getenv("GCM_API_KEY");
                 //Content content = createContent(msg);
                 //Post2Gcm.post(apiKey, content);
                 String ack = createJsonAck(msg.getFrom(), msg.getMessageId());
@@ -460,11 +460,9 @@ public class CcsClient {
     }
 
     public static void main(String[] args) {
-        final String projectId = "813916479990";
+        final String projectId = System.getenv("GCM_PROJECT_ID");
         final String password = "";
-        //final String toRegId = "APA91bGtjDTQ3SAb69VfzW6FaBy6Wq-5KqX9T1qu7LX-DKHu8FNpqzgaoZ8oR4OQ8fRmues4q3rW7FgyrSB19l4RiTiIPyHNHjGXy3VpbbxlmgVZEmrTeO7uKDg0NRNHvPNt9VK9K9Ol";
-        final String toRegId ="APA91bGY4dIfSQXSKtJWMURy2QpJl9yyivYezFDD03kURk0x8EaVj31zmxALgjmg0bVh9eoGCwc5BWNXQh0CFZ9inFk1BJR2WBPLT8MT9ZvXCgX7wRchLlC0GgfxclqIux3vOLHNDiRJ";
-        //final String toRegId = "APA91bGNKqkUQsqv3-Yjh2f84U8Z9v4z6hQ1XUy2g9pDztwGcB28SITCZFBPKgUGVJOvu-oYUyt--fdKiEuxq45vJRZjPYrvYUXQOe9Q0xmBpwofNUTjVNitQW3A1D16rlN0xeoszsZa";
+        final String toRegId = System.getenv("GCM_REGISTRATION_ID");
         CcsClient ccsClient = CcsClient.prepareClient(projectId, password, true);
 
         try {
@@ -492,10 +490,8 @@ public class CcsClient {
    /* public static Content createContent(CcsMessage msg ) {
         Content c = new Content();
 
-        //c.addRegId("APA91bGNKqkUQsqv3-Yjh2f84U8Z9v4z6hQ1XUy2g9pDztwGcB28SITCZFBPKgUGVJOvu-oYUyt--fdKiEuxq45vJRZjPYrvYUXQOe9Q0xmBpwofNUTjVNitQW3A1D16rlN0xeoszsZa");
-       // c.addRegId("APA91bGtjDTQ3SAb69VfzW6FaBy6Wq-5KqX9T1qu7LX-DKHu8FNpqzgaoZ8oR4OQ8fRmues4q3rW7FgyrSB19l4RiTiIPyHNHjGXy3VpbbxlmgVZEmrTeO7uKDg0NRNHvPNt9VK9K9Ol");
         System.out.println("herhehrehr");
-        c.addRegId("APA91bGB-ZbeyCtLP_QRNQE5zu4Y-1LgRlTFiIMh2vDrhtgVwL5vTo5DYiE_YFo4ftOjxk4Nihykt_LSTPL9T_7FX64I7EQoe-l_eQ_4-T36BwAdOgAioktNUE1fwFoaPe6fdzQ1Aayx");
+        c.addRegId("example-registration-id");
             String str = msg.getPayload().get("message");
         c.createData(str, "popop");
 
